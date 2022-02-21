@@ -28,29 +28,35 @@ for (let i = 0; i < quizLabels.length; i++) {
 
 const RespuestasTest= {
     pregunta1: {
-        preguntas: ["Test", "test2", "test3","test4"],
-        correcta: "test2"    
+        pregunta: "¿Cuántas zonas horarias tiene en Rusia?",
+        respuestas: ["1", "5", "20","11"],
+        correcta: "11"    
     },
     pregunta2: {
-        preguntas: ["SegundoTest", "Segundotest2", "Segundotest3","Segundotest4"],
-        correcta: "Segundotest4"    
+        pregunta: "¿Cuál es el animal nacional de Australia? ",
+        respuestas: ["Perro", "Gato", "Caballo","Canguro"],
+        correcta: "Canguro"    
     },
 
     pregunta3: {
-        preguntas: ["TercerTest", "Tercertest2", "Tercertest3","Tercertest4"],
-        correcta: "TercerTest"    
+        pregunta: "¿Cuál es el país más pequeño del mundo?",
+        respuestas: ["Vaticano", "San Marino", "Monaco","China"],
+        correcta: "Vaticano"    
     }
 }
 
 let respuestaCorecta = ""
 let preguntaIncial = 1
-//consulta las preguntas del objeto y arregla en una variable con html
-function prinQuestions(num) {
+//consulta las respuestas del objeto y arregla en una variable con html
+function printQuestions(num) {
     let newHtml = "";
     let preguntaNum = "pregunta"+num
-    for(let i = 0; i<RespuestasTest[preguntaNum].preguntas.length; i++){
-        newHtml += '<label class="respuesta respuesta'+(i+1)+'" for="resp'+(i+1)+'"><p>'+RespuestasTest[preguntaNum].preguntas[i]+'</p></label><br>';
-        newHtml += '<input type="radio" id="resp'+(i+1)+'" name="'+RespuestasTest[preguntaNum].preguntas[i] +'" value="'+RespuestasTest[preguntaNum].preguntas[i]+'" hidden><br>'
+    let newQuestion = "<h1>"+ RespuestasTest[preguntaNum].pregunta+"</h1>";
+    document.getElementById("pregunta").innerHTML = newQuestion;
+    console.log(newQuestion)
+    for(let i = 0; i<RespuestasTest[preguntaNum].respuestas.length; i++){
+        newHtml += '<label class="respuesta respuesta'+(i+1)+'" for="resp'+(i+1)+'"><p>'+RespuestasTest[preguntaNum].respuestas[i]+'</p></label><br>';
+        newHtml += '<input type="radio" id="resp'+(i+1)+'" name="'+RespuestasTest[preguntaNum].respuestas[i] +'" value="'+RespuestasTest[preguntaNum].respuestas[i]+'" hidden><br>'
     }
     respuestaCorecta = RespuestasTest[preguntaNum].correcta;
     return newHtml;
@@ -59,7 +65,7 @@ function prinQuestions(num) {
 //imprime el html en el documento
 function addQuestions(num){
     if(num <= Object.keys(RespuestasTest).length){
-        let addHtml = prinQuestions(num);
+        let addHtml = printQuestions(num);
         document.getElementById("respuestas").innerHTML = addHtml;
         quizLabels = ""
         quizLabels = document.getElementsByTagName("label");
@@ -71,11 +77,11 @@ function addQuestions(num){
 }
 addQuestions(preguntaIncial)
 
-//clicks en preguntas
+//clicks en respuestas
 function clickOn(){
     for (let i = 0; i < quizLabels.length; i++) {
         quizLabels[i].onclick = function () {
-          console.log(this)
+         // console.log(this)
          for (let i = 0; i < quizLabels.length; i++) {
                 quizLabels[i].style.border = "none";
             }
@@ -83,7 +89,7 @@ function clickOn(){
             selectedInput = this.nextElementSibling.nextElementSibling;
             inputName = selectedInput.getAttribute("name")
             inputValue = selectedInput.getAttribute("value")
-            console.log(this.nextElementSibling.nextElementSibling)
+            //console.log(this.nextElementSibling.nextElementSibling)
             if(respuestaCorecta === inputValue) {
                 selectedElement.style.border = "5px solid green";
                 preguntaIncial +=1;

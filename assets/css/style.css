@@ -17,8 +17,9 @@ h1 {
 }
 
 p {
-    font-size: 1rem;
-    font-weight: 300;
+    font-size: 2rem;
+    font-weight: 900;
+    color: black;
 }
 
 button {
@@ -91,6 +92,13 @@ form {
 #respuestas {
     width: 100%;
     height: 80%;
+
+
+    margin: auto;
+    display: flex;
+    justify-content: flex;
+    flex-wrap: wrap;
+
 }
 
 .respuesta {
