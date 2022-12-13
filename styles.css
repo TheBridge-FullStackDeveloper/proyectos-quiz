@@ -58,16 +58,25 @@ main {
     margin: 10% 5%;
 }
 
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 legend {
     font-size: 300%;
     margin:0 auto;
     text-align: center;
-    margin: 10% 0%;
     font-size: 300%;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: rgb(235, 28, 28);
     text-shadow: 0px 5px 80px rgb(197, 0, 0);
+}
 
+p{
+    color: yellow;
+    font-style: italic;
 }
 
 form{
@@ -75,7 +84,8 @@ form{
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
-
+    
+    margin-top: 10%;
     margin-right: 10%;
 }
 
@@ -83,7 +93,7 @@ fieldset {
     display: flex;
     flex-direction: column;
     align-items: center;
-
+margin-bottom:12%;
     border: 0;
     padding: 10%;
     width: 90%;
@@ -107,12 +117,16 @@ fieldset {
     width: 100%;
 }
 
+label{
+    cursor: pointer;
+}
+
 #respuestas:hover {
     background-image: linear-gradient(to right, rgb(221, 0, 40), rgb(255, 255, 255));
 }
 
 input{
-    /*appearance: none*/
+    appearance: none;
 }
 
 button{
