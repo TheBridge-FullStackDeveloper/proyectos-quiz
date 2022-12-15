@@ -83,11 +83,12 @@ document.getElementById("formulario").addEventListener("submit", function (event
     console.log(event)
     for (let i = 1; i < questions.length; i++) {
         for (let j = 0; j < 3; j++) {
+            
             if (event.target[i].checked === true) {
                 if (questions[i].options[j] === questions[i].correcta) {
-                    document.getElementById(`(respuesta ${[i]} ${[j]})>input[type=radio]:checked`).style.backgroundColor = "green";
+                    document.querySelector(`(#respuesta ${[i]} ${[j]})>input[type=radio]:checked`).style.backgroundColor = "green";
                 } else {
-                    document.getElementById(`(respuesta ${[i]} ${[j]})>input[type=radio]:checked`).style.backgroundColor = "red";
+                    document.querySelector(`(#respuesta ${[i]} ${[j]})>input[type=radio]:checked`).style.backgroundColor = "red";
                 }
 
             }
